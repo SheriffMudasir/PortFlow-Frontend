@@ -1,6 +1,9 @@
 /**
  * API Test Script for PortFlow Frontend
  * Run this in the browser console to test all API endpoints
+ * 
+ * Note: This script uses a hardcoded URL for testing purposes.
+ * In the main application, the URL is loaded from NEXT_PUBLIC_API_URL in .env.local
  */
 
 const API_URL = 'https://22aac83d5243.ngrok-free.app';
