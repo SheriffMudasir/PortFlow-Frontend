@@ -56,9 +56,7 @@ export function ChatWidget() {
         let cancelled = false;
 
         const fetchToken = async (): Promise<{ token: string; session_id: string }> => {
-            const response = await fetch(tokenUrl, {
-                headers: { "ngrok-skip-browser-warning": "true" },
-            });
+            const response = await fetch(tokenUrl);
 
             if (!response.ok) {
                 throw new Error(`[ChatWidget] Token request failed: ${response.status}`);
@@ -72,7 +70,7 @@ export function ChatWidget() {
                 console.log("[ChatWidget] Loading configuration and token...");
                 
                 const [configResponse, tokenData] = await Promise.all([
-                    fetch(configUrl, { headers: { "ngrok-skip-browser-warning": "true" } }),
+                    fetch(configUrl),
                     fetchToken()
                 ]);
 

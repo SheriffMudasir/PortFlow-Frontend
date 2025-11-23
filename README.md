@@ -74,7 +74,15 @@ Follow these steps to set up the project locally.
    pnpm install
    ```
 
-4. **Run the development server**
+4. **Set up environment variables**
+
+   Create a `.env.local` file in the `portflow` directory:
+
+   ```env
+   NEXT_PUBLIC_API_URL=https://portflow-backend.onrender.com
+   ```
+
+5. **Run the development server**
 
    ```bash
    npm run dev
@@ -84,9 +92,59 @@ Follow these steps to set up the project locally.
    pnpm dev
    ```
 
-5. **Open the application**
+6. **Open the application**
 
    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 🌐 Backend Integration
+
+### Production Backend
+**URL**: `https://portflow-backend.onrender.com`
+
+### Available API Endpoints
+
+#### Container Operations
+- `GET /api/containers` - List all containers
+- `GET /api/containers/{container_id}` - Get container details
+- `POST /api/upload` - Upload Bill of Lading (multipart/form-data)
+
+#### Customs Operations
+- `GET /api/customs/status/{container_id}` - Check customs status
+- `POST /api/customs/pay` - Pay customs duty
+
+#### Shipping Operations
+- `GET /api/shipping/status/{container_id}` - Check shipping status
+
+#### Inspection Operations
+- `POST /api/inspection/schedule` - Schedule inspection
+- `POST /api/inspection/complete` - Complete inspection
+- `POST /api/containers/{container_id}/release` - Release container
+
+#### Watsonx AI Integration
+- `GET /api/watsonx/config` - Get widget configuration
+- `GET /api/watsonx/token` - Get authentication token
+
+### CORS Configuration
+The backend accepts requests from:
+- `https://port-flow-frontend.vercel.app` (Production)
+- `http://localhost:3000` (Local development)
+
+## 🚀 Deployment
+
+### Environment Variables for Production
+
+When deploying to Vercel or other platforms, set:
+
+```env
+NEXT_PUBLIC_API_URL=https://portflow-backend.onrender.com
+```
+
+### Build for Production
+
+```bash
+npm run build
+npm run start
+```
 
 ## 📜 Scripts
 

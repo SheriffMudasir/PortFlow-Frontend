@@ -23,7 +23,6 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
     const url = `${API_URL}${endpoint}`;
     
     const headers: Record<string, string> = {
-        'ngrok-skip-browser-warning': 'true',
         ...(options.headers as Record<string, string>),
     };
 
